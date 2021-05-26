@@ -16,6 +16,7 @@ from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_encode
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ugettext_noop
+from localflavor.cl.forms import CLRutField
 
 # managers
 from users.managers import UserManager
@@ -54,6 +55,12 @@ class User(AbstractBaseUser, PermissionsMixin, BaseModel):
         _('last name'),
         max_length=30,
         blank=True,
+    )
+    rut = models.CharField(
+        _('rut'),
+        max_length=20,
+        unique=True,
+        validators=[CLRutField.clean]
     )
     is_staff = models.BooleanField(
         _('staff status'), default=False,
