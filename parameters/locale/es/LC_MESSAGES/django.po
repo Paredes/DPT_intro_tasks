@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-19 11:33-0400\n"
+"POT-Creation-Date: 2021-05-26 17:42-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,53 +21,53 @@ msgstr ""
 msgid "parameters"
 msgstr "parámetros"
 
-#: enums.py:26
+#: enums.py:32
 #, fuzzy
 #| msgid "default url protocol: https"
 msgid "Default url protocol"
 msgstr "Protocolo URL por defecto: https"
 
-#: models.py:22
+#: models.py:24
 msgid "value"
 msgstr "valor"
 
-#: models.py:26 templates/parameters/parameter_list.pug:19
+#: models.py:28 templates/parameters/parameter_list.pug:19
 msgid "name"
 msgstr "nombre"
 
-#: models.py:32
+#: models.py:33
 msgid "kind"
 msgstr "tipo"
 
-#: models.py:34
+#: models.py:35
 msgid "integer"
 msgstr "número entero"
 
-#: models.py:35
+#: models.py:36
 msgid "text"
 msgstr "texto"
 
-#: models.py:36
+#: models.py:37
 msgid "time"
 msgstr "tiempo"
 
-#: models.py:37
+#: models.py:38
 msgid "date"
 msgstr ""
 
-#: models.py:38
+#: models.py:39
 msgid "json"
 msgstr "json"
 
-#: models.py:42
+#: models.py:43
 msgid "cache seconds"
 msgstr "segundos a guardar"
 
-#: models.py:51
+#: models.py:52
 msgid "Invalid input"
 msgstr "valor inválido"
 
-#: models.py:57 models.py:63
+#: models.py:58 models.py:64
 msgid "Invalid time format"
 msgstr "Formato de tiempo inválido"
 
@@ -97,3 +97,9 @@ msgstr "Borrar parámetro"
 #: templates/parameters/parameter_list.pug:10
 msgid "Add parameter"
 msgstr "Agregar parámetro"
+
+#: validators.py:12
+#, fuzzy
+#| msgid "Invalid input"
+msgid "Invalid protocol"
+msgstr "valor inválido"

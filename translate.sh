@@ -84,4 +84,5 @@ else
     translate "users"
     translate "regions"
     translate "parameters"
+    translate "attendances"
 fi

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-19 11:22-0400\n"
+"POT-Creation-Date: 2021-05-26 17:42-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,23 +18,61 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: models.py:43
+#: fields.py:25
+#, python-format
+msgid "Chilean RUT (up to %(max_length)s)"
+msgstr ""
+
+#: fields.py:28
+#, python-format
+msgid ""
+"'%(value)s' value has an invalid format. It must be in XX.XXX.XXX-Y format "
+"or XXXXXXXXY format."
+msgstr ""
+
+#: fields.py:33
+#, python-format
+msgid "'%(value)s' value has the correct format  but it is an invalid rut."
+msgstr ""
+
+#: fields.py:37
+#, python-format
+msgid "'%(value)s' must be str or None."
+msgstr ""
+
+#: models.py:44
 msgid "No"
 msgstr "No"
 
-#: models.py:43
+#: models.py:44
 msgid "Yes"
 msgstr "Yes"
 
-#: models.py:47
+#: models.py:48
 msgid "creation date"
 msgstr "fecha de creación"
 
-#: models.py:51
+#: models.py:49
+#, fuzzy
+#| msgid "creation date"
+msgid "created at"
+msgstr "fecha de creación"
+
+#: models.py:53
 msgid "edition date"
 msgstr "fecha de edición"
 
-#: templates/base.pug:80 templates/base.pug:84
+#: models.py:54
+#, fuzzy
+#| msgid "Update %s"
+msgid "updated at"
+msgstr "Actualizar %s"
+
+#: models.py:154
+msgid "display order"
+msgstr ""
+
+#: templates/base.pug:122 templates/base.pug:126
 msgid "Home"
 msgstr "Inicio"
 
@@ -54,7 +92,15 @@ msgstr "página no encontrada"
 msgid "There has been an error"
 msgstr "Ha ocurrido un error"
 
-#: templates/includes/field.pug:19
+#: templates/form.pug:52
+msgid "Save"
+msgstr ""
+
+#: templates/form.pug:56
+msgid "Cancel"
+msgstr ""
+
+#: templates/includes/field.pug:21
 msgid "optional"
 msgstr "opcional"
 
@@ -91,21 +137,21 @@ msgstr "Mostrando resultados desde %(start_index)s hasta %(end_index)s"
 msgid "total"
 msgstr "total"
 
-#: views.py:92 views.py:141
+#: views.py:134 views.py:185
 #, python-format
 msgid "Create %s"
 msgstr "Crear %s"
 
-#: views.py:225
+#: views.py:268
 #, python-format
 msgid "Update %s"
 msgstr "Actualizar %s"
 
-#: views.py:240
+#: views.py:299
 #, python-format
 msgid "Delete %s"
 msgstr "Borrar %s"
 
-#: views.py:290
+#: views.py:354
 msgid "status"
 msgstr "status"
