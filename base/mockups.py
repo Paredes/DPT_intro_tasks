@@ -21,6 +21,7 @@ from parameters.models import Parameter
 from regions.models import Commune
 from regions.models import Region
 from users.models import User
+from attendances.models import Attendance
 
 # utils
 from inflection import underscore
@@ -52,6 +53,8 @@ class Mockup(object):
 
         if kwargs.get('is_active') is None:
             kwargs['is_active'] = True
+        
+        self.set_required_rut(kwargs,'rut')
 
         user = User.objects.create(**kwargs)
 
@@ -60,6 +63,10 @@ class Mockup(object):
             user.save()
 
         return user
+
+    def create_attendance(self, **kwargs):
+        self.set_required_foreign_key(kwargs, 'user')
+        return Attendance.objects.create(**kwargs)
 
     def random_email(self):
         return "{}@{}.{}".format(
