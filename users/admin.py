@@ -34,7 +34,7 @@ class UserAdmin(DjangoUserAdmin):
     change_form_template = 'loginas/change_form.html'
 
     add_form = UserCreationForm
-    list_display = ('email', 'first_name', 'last_name', 'is_staff',
+    list_display = ('email', 'first_name', 'last_name', 'rut','is_staff',
                     'change_password_link')
     form = UserChangeForm
 

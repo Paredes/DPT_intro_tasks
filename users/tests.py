@@ -23,7 +23,7 @@ class UserTests(BaseTestCase):
         Tests that users are created with lower case emails
         """
         url = reverse('password_change')
-        response = self.client.get(url)
+        response = self.client.get(url, follow=True)
 
         # test that the user is logged in
         self.assertEqual(response.status_code, 200)
