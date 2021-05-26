@@ -48,7 +48,7 @@ class Attendance(BaseModel):
 
     def __str__(self):
         day_formatted = self.date.strftime("%d/%m/%Y")
-        time_format = lambda t: t.strftime('%H%M')
+        time_format = lambda t: t.strftime('%H:%M')
         return f'{day_formatted} ({time_format(self.check_in_time)}-{time_format(self.check_out_time)})'
     
     def is_a_valid_period(self):

@@ -16,7 +16,10 @@ block content
     thead
       tr
         th Id
-        th {% trans 'name'|capfirst %}
+        th {% trans 'date'|capfirst %}
+        th {% trans 'Check in time' %}
+        th {% trans 'Check out time' %}
+        th {% trans 'Link' %}
         if perms.attendances.change_attendance or perms.attendances.delete_attendance
           th
     tbody
@@ -25,6 +28,9 @@ block content
           td
             a(href="{{ attendance.get_absolute_url }}")
               | {{attendance.id}}
+          td {{attendance.date}}
+          td {{attendance.check_in_time}}
+          td {{attendance.check_out_time}}
           td
             a(href="{{ attendance.get_absolute_url }}")
               | {{attendance}}
