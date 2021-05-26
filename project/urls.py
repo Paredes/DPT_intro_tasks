@@ -17,7 +17,7 @@ from django.conf import settings
 from django.urls import include, path
 from django.contrib import admin
 from django.conf.urls.static import static
-
+from attendances.views import AttendanceListView
 from base import views as base_views
 
 urlpatterns = [
@@ -27,7 +27,8 @@ urlpatterns = [
     path('regions/', include('regions.urls')),
     path('status/', base_views.StatusView.as_view(), name='status'),
     path('api/v1/', include('api.urls', namespace='api')),
-    path('', base_views.index, name='home'),
+    path('', AttendanceListView.as_view(), name='home'),
+    path('attendances/', include('attendances.urls')),
 ]
 
 
