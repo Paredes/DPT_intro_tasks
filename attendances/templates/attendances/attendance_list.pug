@@ -1,0 +1,42 @@
+extends base.pug
+
+- load i18n
+
+block options
+  if perms.attendances.add_attendance
+    a.btn.btn-sm.btn-outline-secondary(
+      href="{% url 'attendance_create' %}"
+    )
+      {% trans 'Add attendance' %}
+      i.fa.fa-plus
+
+block content
+
+  table.table.table-striped.table-hover.table-sm
+    thead
+      tr
+        th Id
+        th {% trans 'name'|capfirst %}
+        if perms.attendances.change_attendance or perms.attendances.delete_attendance
+          th
+    tbody
+      for attendance in object_list
+        tr
+          td
+            a(href="{{ attendance.get_absolute_url }}")
+              | {{attendance.id}}
+          td
+            a(href="{{ attendance.get_absolute_url }}")
+              | {{attendance}}
+          if perms.attendances.change_attendance or perms.attendances.delete_attendance
+            td.text-right
+              if perms.attendances.change_attendance
+                a.btn.btn-sm.btn-outline-secondary(href="{% url 'attendance_update' attendance.id %}")
+                  {% trans 'Update attendance' %}
+                  i.fa.fa-edit
+              if perms.attendances.delete_attendance
+                a.btn.btn-sm.btn-danger(href="{% url 'attendance_delete' attendance.id %}")
+                  {% trans 'Delete attendance' %}
+                  i.fa.fa-times
+
+  {% include 'includes/pagination.pug' %}

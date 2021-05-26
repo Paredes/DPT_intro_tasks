@@ -112,6 +112,7 @@ INSTALLED_APPS = [
     # internal
     'regions',
     'parameters',
+    'attendances',
 ]
 
 # Email settings, uncomment if your project sends emails

@@ -1,0 +1,25 @@
+extends base.pug
+
+- load i18n
+
+block options
+  if perms.attendances.change_attendance
+    a.btn.btn-sm.btn-outline-secondary(href="{% url 'attendance_update' attendance.id %}")
+      {% trans 'Update attendance' %}
+      i.fa.fa-edit
+  if perms.attendances.delete_attendance
+    a.btn.btn-sm.btn-danger(href="{% url 'attendance_delete' attendance.id %}")
+      {% trans 'Delete attendance' %}
+      i.fa.fa-times
+
+block breadcrumbs
+  li.breadcrumb-item
+    a(href="{% url 'attendance_list' %}")
+      | {{opts.verbose_name_plural|capfirst}}
+
+block content
+  table.table.table-striped.table-hover.table-sm
+    tbody
+      tr
+        th Id
+        td {{attendance.id}}
