@@ -152,6 +152,13 @@ class UserCreationForm(BaseModelForm):
     last_name = forms.CharField(
         label=_("last name").capitalize(),
     )
+    rut = CLRutField(
+        label=_("Rut"),
+        required=True,
+        widget=forms.TextInput(
+            attrs={'class': 'form-control', 'placeholder': _("Rut")}
+        )
+    )
     password1 = forms.CharField(
         label=_("New password"),
         widget=forms.PasswordInput,
@@ -207,7 +214,7 @@ class UserCreationForm(BaseModelForm):
         user.first_name = self.cleaned_data["first_name"]
         user.last_name = self.cleaned_data["last_name"]
         user.is_active = not verify_email_address
-
+        user.rut = self.cleaned_data["rut"]
         if commit:
             user.save()
 
