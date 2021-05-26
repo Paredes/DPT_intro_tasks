@@ -16,17 +16,17 @@ from users.models import User
 # forms
 from captcha.fields import ReCaptchaField
 from base.forms import BaseModelForm
-
+from localflavor.cl.forms import CLRutField
 
 class AuthenticationForm(forms.Form):
     """ Custom class for authenticating users. Takes the basic
     AuthenticationForm and adds email as an alternative for login
     """
-    email = forms.EmailField(
-        label=_("Email"),
+    rut = CLRutField(
+        label=_("Rut"),
         required=True,
-        widget=forms.EmailInput(
-            attrs={'class': 'form-control', 'placeholder': _("Email")}
+        widget=forms.TextInput(
+            attrs={'class': 'form-control', 'placeholder': _("Rut")}
         )
     )
     password = forms.CharField(
@@ -38,8 +38,8 @@ class AuthenticationForm(forms.Form):
     )
 
     error_messages = {
-        'invalid_login': _("Please enter a correct email and password. "
-                           "Note that both fields may be case-sensitive."),
+        'invalid_login': _("Please enter a correct rut and password. "
+                           "Note that the field password is case-sensitive."),
         'no_cookies': _("Your Web browser doesn't appear to have cookies "
                         "enabled. Cookies are required for logging in."),
         'inactive': _("This account is inactive."),
@@ -55,24 +55,23 @@ class AuthenticationForm(forms.Form):
         self.request = request
         self.user_cache = None
         UserModel = get_user_model()
-        self.email_field = UserModel._meta.get_field(UserModel.USERNAME_FIELD)
+        self.rut_field = UserModel._meta.get_field(UserModel.USERNAME_FIELD)
         super(AuthenticationForm, self).__init__(*args, **kwargs)
 
     def clean(self):
         """
-        validates the email and password.
+        validates the rut and password.
         """
-        email = self.cleaned_data.get('email')
+        rut = self.cleaned_data.get('rut')
         password = self.cleaned_data.get('password')
-
-        if email and password:
-            self.user_cache = authenticate(email=email,
+        if rut and password:
+            self.user_cache = authenticate(rut=rut,
                                            password=password)
             if self.user_cache is None:
                 raise forms.ValidationError(
                     self.error_messages['invalid_login'],
                     code='invalid_login',
-                    params={'email': self.email_field.verbose_name},
+                    params={'rut': self.rut_field.verbose_name},
                 )
             elif not self.user_cache.is_active:
                 raise forms.ValidationError(
